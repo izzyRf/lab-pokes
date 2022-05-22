@@ -1,6 +1,7 @@
 <template>
   <!-- registro -->
   <div>
+
       <h3>Welcome!</h3>
         <form @submit.prevent="crearUsuario({email: email , password: pass1})">
             <input 
@@ -21,8 +22,10 @@
             >
             <button type="submit">Registrar Usuario</button>
         </form>
-        
+
   </div>
+
+
 </template>
 
 <script>
@@ -45,7 +48,13 @@ export default {
     return {
       email: '',
       pass1: '',
-      pass2: ''
+      pass2: '',
+      //input styles
+       alignments: [
+        'start',
+        'center',
+        'end',
+      ],
     }
   },
 }

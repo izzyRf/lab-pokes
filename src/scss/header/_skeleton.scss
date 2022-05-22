@@ -1,0 +1,19 @@
+
+
+// _base.scss
+$font-stack: Helvetica, sans-serif;
+$primary-color: rgb(225, 28, 28);
+
+.bodyC {
+  font: 100% $font-stack;
+  color:  rgb(225, 28, 28);
+  padding: 45px 0;
+  background-color: rgb(127, 175, 175);
+}
+
+.centerDIV {
+    margin: auto;
+    width: 50%;
+    // border: 3px solid green;
+    padding: 0px;
+  }

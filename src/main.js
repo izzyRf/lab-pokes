@@ -8,6 +8,7 @@ Vue.config.productionTip = false
 import {auth} from './firebase'
 import vuetify from './plugins/vuetify'
 
+
 auth.onAuthStateChanged(user => {
   if (user){
     const detectoUser = {

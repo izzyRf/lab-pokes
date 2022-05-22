@@ -1,8 +1,21 @@
 <template>
-  <!-- registro -->
-  <div>
-     
-  <v-card
+  <!-- <form @submit.prevent="ingresoUsuario({email: email , password: pass })">
+        <input 
+             type="email" 
+             placeholder="Ingrese email"
+             v-model="email"
+         >
+         <input 
+             type="password" 
+             placeholder="Ingrese contraseña"
+             v-model="pass"
+         >
+            {{error}}
+
+         <button type="submit">Acceder</button>
+    </form>  -->
+    <div>
+        <v-card
     class="mx-auto"
     max-width="400"
   >
@@ -13,7 +26,7 @@
           class="text-h2"
           cols="12"
         >
-        <form @submit.prevent="crearUsuario({email: email , password: pass1})">
+        <form @submit.prevent="ingresoUsuario({email: email , password: pass })">
         <v-text-field
           label="correo"
           :rules="rules"
@@ -26,19 +39,14 @@
           label="Contraseña"
           hide-details="auto"
           type="password"
-          v-model="pass1"
+          v-model="pass"
         ></v-text-field>
 
-        <v-text-field
-          label="Confirma contraseña"
-          hide-details="auto"
-          type="password"
-          v-model="pass2"
-        ></v-text-field>
+    
         <v-divider></v-divider>
 
           <v-btn type="submit">
-            registrar
+            Acceder
             </v-btn>
         </form>
         </v-col>
@@ -46,49 +54,32 @@
         </v-card-text>
 
   </v-card>
-
-  </div>
-
-
-
-
-
-
+    </div>
 </template>
 
 <script>
 
 import { mapActions, mapState } from 'vuex'
 
-
 export default {
-  name: 'Registro',
-  methods: {
-      ...mapActions(['crearUsuario'])
-  },
-  computed:{
-      ...mapState(['error'])
-  },
-  created(){   
-  },
-    
- data () {
+  name:'Acceder',
+  data () {
     return {
-      email: '',
-      pass1: '',
-      pass2: '',
-      //input styles
-       alignments: [
-        'start',
-        'center',
-        'end',
-      ],
-       rules: [
+      email:'',
+      pass:'',
+    rules: [
         value => !!value || 'Required.',
         value => (value && value.length >= 3) || 'Min 3 characters',
       ],
     }
   },
+  methods: {
+      ...mapActions(['ingresoUsuario'])
+  },
+   computed:{
+      ...mapState(['error'])
+  },
+
 }
 </script>
 

@@ -50,6 +50,7 @@ export default new Vuex.Store({
             uid: user.uid
           }
           commit('setUsuario', usuarioLoggeado)
+          router.push('/home')
           // ...
         })
         .catch((error) => {

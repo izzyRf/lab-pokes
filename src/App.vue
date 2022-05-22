@@ -1,6 +1,8 @@
 <template>
-  <v-app>
-    <v-app-bar
+  <v-app >
+
+
+    <!-- <v-app-bar
       app
       color="primary"
       dark
@@ -35,15 +37,21 @@
         <span class="mr-2">Latest Release</span>
         <v-icon>mdi-open-in-new</v-icon>
       </v-btn>
-    </v-app-bar>
+    </v-app-bar> -->
+    <NavBar/>
 
-    <v-main>
+    <v-main class="bodyC">
       <router-view/>
     </v-main>
+
+    <Footer/>
+
   </v-app>
 </template>
 
 <script>
+import NavBar from './components/NavBar.vue'
+import Footer from './components/Footer.vue'
 
 export default {
   name: 'App',
@@ -51,5 +59,11 @@ export default {
   data: () => ({
     //
   }),
+  components:{
+    NavBar,
+    Footer
+}
 };
 </script>
+
+<style  lang="scss" src="./scss/main.scss"></style>

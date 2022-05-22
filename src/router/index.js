@@ -35,7 +35,7 @@ const routes = [
     component: Acceso
   },
   {
-    path: '/panel',
+    path: '/home',
     name: 'Panel',
     component: Panel,
     meta: {requiresAuth: true}
@@ -56,7 +56,7 @@ router.beforeEach((to, from, next) => {
     console.log("usuario desde router: "+usuario)
 
     if(!usuario){
-      next('/registro')
+      next('/')
     }else{
       next()
     }
