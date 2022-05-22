@@ -2,6 +2,10 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
+import axios from 'axios'
+import VueAxios from 'vue-axios'
+
+Vue.use(VueAxios, axios)
 
 Vue.config.productionTip = false
 
@@ -17,9 +21,10 @@ auth.onAuthStateChanged(user => {
     }
     //acceso al store para acticar una acción
     store.dispatch('detectUser',detectoUser)
-    console.log("despachando acccion")
+    console.log("Usuario logueado")
   }else{
     console.log(user)
+    console.log("No logueado")
     store.dispatch('detectUser',user)
 
   }

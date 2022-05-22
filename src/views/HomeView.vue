@@ -2,6 +2,7 @@
   <!-- <hello-world /> -->
 
   <div >
+    <NavBar/>
 
 
   <v-card>
@@ -59,6 +60,8 @@
   import Registro from '../components/Register.vue'
   import Parallax from '../components/Parallax.vue'
   import Acceso from '../components/Access.vue'
+  import NavBar from '../components/NavBar.vue'
+
   
 
 
@@ -71,11 +74,12 @@
   },
     name: 'Home',
 
-    components: {
+  components: {
     HelloWorld,
     Registro,
     Parallax,
-    Acceso
+    Acceso,
+    NavBar
 },
   }
 </script>

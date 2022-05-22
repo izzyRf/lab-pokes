@@ -38,7 +38,7 @@
         <v-icon>mdi-open-in-new</v-icon>
       </v-btn>
     </v-app-bar> -->
-    <NavBar/>
+    <!-- <NavBar/> -->
 
     <v-main class="bodyC">
       <router-view/>
@@ -50,7 +50,7 @@
 </template>
 
 <script>
-import NavBar from './components/NavBar.vue'
+import NavBar from './components/NavBar2.vue'
 import Footer from './components/Footer.vue'
 
 export default {

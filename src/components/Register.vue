@@ -6,7 +6,6 @@
     class="mx-auto"
     max-width="400"
   >
-    
     <v-card-text>
       <v-row align="center">
         <v-col

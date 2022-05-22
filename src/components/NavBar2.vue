@@ -59,6 +59,8 @@
        
       </v-btn> -->
     <v-switch
+     v-if="existeUser"
+      class="switchMode"
       v-model="switch1"
       inset
       :label="`Dark mode: ${switch1.toString() === 'true'? 'Activado' : 'Desactivado'}`"
