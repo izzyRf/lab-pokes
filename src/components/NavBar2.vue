@@ -9,7 +9,7 @@
     >
         <v-icon>mdi-pokeball</v-icon>
     </v-app-bar-nav-icon>
-    <v-app-bar-nav-icon class="d-none d-sm-flex" >
+    <v-app-bar-nav-icon class="d-none d-sm-flex"  to="/" >
         <v-icon>mdi-pokeball</v-icon>
     </v-app-bar-nav-icon>
 

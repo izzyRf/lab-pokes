@@ -71,27 +71,15 @@
                 <h4 class="centerDIV text- purple--text ">{{pokemon.tipo}}</h4>
             </v-card-actions>
 
-            <v-card-actions class="ml-2 mt-1 centerTitulo">
-              <v-btn
-                class="ml-2 mt-1"
-                outlined
-                
-                small
-                color="red"
-                :to="`/pokemon-detail/${pokemon.id}`"
-              >
-                <v-icon >mdi-eye-outline</v-icon>Ver
-              </v-btn>
-            </v-card-actions>
-
+           
             <v-card-actions class="centerTitulo">
                 <v-chip
                   class="ma-2"
                   color="cyan lighten-1"
                   outlined
                 >
-                <v-icon>
-                    mdi-teddy-bear
+                <v-icon left class="x-small">
+                    mdi-star-face
                 </v-icon>
                 Exp: {{pokemon.experiencia}}
                 </v-chip>
@@ -119,6 +107,18 @@
                 >
                  {{pokemon.habilidad}}
                 </v-chip>
+            </v-card-actions>
+
+             <v-card-actions class="centerTitulo">
+              <v-btn
+                class="ml-2 mt-1"
+                outlined
+                small
+                color="teal accent-2"
+                :to="`/pokemon-detail/${pokemon.id}`"
+              >
+                <v-icon x-small>mdi-card-account-details-star</v-icon> Ver
+              </v-btn>
             </v-card-actions>
 
             

@@ -43,47 +43,25 @@
 
     <v-card-actions class="ml-2 mt-1 centerTitulo">
               <v-btn
-                class="ml-2 mt-1"
-                outlined
                 small
                 color="red"
                 @click="clearPokedex"
               >
                 <v-icon >mdi-eraser</v-icon>Limpiar pokedex
               </v-btn>
+             
+    </v-card-actions>
+
+        <v-card-actions class="ml-2 mt-1 centerTitulo">
+             
               <v-btn
-                class="ml-2 mt-1"
-                outlined
                 small
                 color="blue"
-
               >
-                <v-icon >mdi-eye-outline</v-icon>recargar Seleccion
+                <v-icon >mdi-reload</v-icon>Recargar listado pokemones
               </v-btn>
     </v-card-actions>
-    
-
-    <!-- <v-card-title>Limpiar</v-card-title>
-    <v-btn
-  color="accent"
-  elevation="7"
-  large
-  outlined
-  rounded
-  small
-></v-btn> -->
-
-   
-
-    <v-card-actions>
-      <v-btn
-        color="deep-purple lighten-2"
-        text
-        @click="reserve"
-      >
-        Limpiar
-      </v-btn>
-    </v-card-actions>
+ 
   </v-card>
 
     </v-col>
