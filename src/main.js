@@ -12,6 +12,7 @@ Vue.config.productionTip = false
 import {auth} from './firebase'
 import vuetify from './plugins/vuetify'
 
+import 'material-design-icons-iconfont/dist/material-design-icons.css'
 
 auth.onAuthStateChanged(user => {
   if (user){

@@ -47,27 +47,7 @@
       </v-col>
     </v-row>
 
-    <!-- pokemones -->
-    <v-row no-gutters>
-      <v-col
-        md="6"
-        offset-md="3"
-      >
-        <v-card
-          class="pa-2"
-          outlined
-          tile
-        >
-        <ul>
-            <li v-for="item in pokemones" :key="item.id">
-                {{item.pokemon.url}}
-            </li>
-
-           
-        </ul>
-        </v-card>
-      </v-col>
-    </v-row>
+  
 
   </v-container>
 
@@ -78,103 +58,16 @@
         sm="6"
         md="9"
       >
-        <!-- .tengo 9 cols -->
+        <!-- .COLUMNAS  -->
         <v-row>
-            <v-col
-                cols="12"
-                md="3"
-                lg ="4"
-            >
-                <v-card
-            class="pa-5 "
-            outlined
-            tile
-            color="#26c6da"
-            
-          >
-            One of three 3 columns
-                </v-card>
-            </v-col>
-            <v-col
-                cols="12"
-                md="3"
-                lg ="4"
-            >
-                <v-card
-                  class="pa-5 "
-                  outlined
-                  tile
-                  color="#26c6da"
-                >
-                    One of three 3 columns
-                </v-card>
-            </v-col>
-            <v-col
-                cols="12"
-                md="3"
-                lg ="4"
-            >
-                <v-card
-                  class="pa-5 "
-                  outlined
-                  tile
-                  color="#26c6da"
-                >
-                  One of three 3 columns
-                </v-card>
-            </v-col>
-
-            <v-col
-                cols="12"
-                md="3"
-                lg ="4"
-            >
-                <v-card
-                  class="pa-5 "
-                  outlined
-                  tile
-                  color="#26c6da"
-                >
-                  One of three 3 columns
-                </v-card>
-            </v-col>
-            <v-col
-                cols="12"
-                md="3"
-                lg ="4"
-            >
-                <v-card
-                  class="pa-5 "
-                  outlined
-                  tile
-                  color="#26c6da"
-                >
-                  One of three 3 columns
-                </v-card>
-            </v-col>
-            <v-col
-                cols="12"
-                md="3"
-                lg ="4"
-            >
-                <v-card
-                  class="pa-5 "
-                  outlined
-                  tile
-                  color="#26c6da"
-                >
-                  One of three 3 columns
-                </v-card>
-            </v-col>
-            
-            <CardPokemon/>
-            
+            <CardPokemon v-for="(item, index) in pokemones" :key="index" :text="`texto propiedad○ ${index}`" :url="`${item.pokemon.url}`"/>
         </v-row>
  
       </v-col>
       <!-- COLUMNA CARD -->
       <v-col
         md="3"
+        lg="3"
       >
         <v-card
           class="pa-2"
@@ -226,11 +119,13 @@ export default {
         this.isLoading = false;
       },
       async getTypes(){
+          
           let types = await axios.get('https://pokeapi.co/api/v2/type')
           this.tipos = types.data.results
       },
       async byType(id){
            //setTimeout(() => this.basketAddSuccess = false, 2000);
+          this.pokemones = []
           console.log("consulta API: "+id)
           this.isLoading = true;
 

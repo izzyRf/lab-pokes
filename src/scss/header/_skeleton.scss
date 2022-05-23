@@ -8,7 +8,25 @@ $primary-color: rgb(225, 28, 28);
   font: 100% $font-stack;
   color:  rgb(225, 28, 28);
   padding: 45px 0;
-  background-color: rgb(127, 175, 175);
+ 
+  background-image:url('https://images.alphacoders.com/998/thumb-1920-998181.jpg');
+  background-attachment:fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.opa{
+    opacity: 95%;
+}
+
+.nombreCard{
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+    font-family: Lucida Sans Unicode;
+    font-size: 16;
+    color: rgb(212, 63, 207);
+    text-shadow: 2px 2px 2px #726f6f;
 }
 
 .centerDIV {
@@ -16,4 +34,11 @@ $primary-color: rgb(225, 28, 28);
     width: 50%;
     // border: 3px solid green;
     padding: 0px;
+  }
+
+
+  .centerTitulo{
+    display: flex;
+    align-items: center;
+    justify-content: center; 
   }
