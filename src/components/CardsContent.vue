@@ -11,29 +11,32 @@
        </loading>
 
     <v-row
-      class="mb-6"
-      no-gutters
+     
+      
     >
       <!-- SELECT DE POLEMONES -->
       <v-col md="4" offset-md="4">
         <v-card
           class="pa-2"
-          outlined
-          tile
+          
+          :dark="darkMode"
         >
         <v-select
             :items="tipos"
-            label="Tipo"
+            label="Selector pokemones"
+            outlined
+             
          >
              <template v-slot:item="{ item, attrs, on }">
                <v-list-item
                  v-bind="attrs"
                  v-on="on"
+                 @click="byType(item.url)"
                >
                  <v-list-item-title
                    :id="item.url"
                    v-text="item.name"
-                   @click="byType(item.url)"
+                   
                  ></v-list-item-title>
                </v-list-item>
              </template>
@@ -98,6 +101,7 @@ import CardPokemon from '../components/CardPokemon.vue'
 import Pokedex from '../components/Pokedex.vue';
 
 import 'vue-loading-overlay/dist/vue-loading.css';
+import { mapState } from 'vuex';
 
 
 
@@ -146,6 +150,9 @@ export default {
       onCancel() {
               console.log('User cancelled the loader.')
             }
+  },
+  computed:{
+      ...mapState(['darkMode'])
   },
   name:'Panel',
   created () {

@@ -6,6 +6,7 @@
         <v-card
     :loading="loading"
     class="pokedexFix"
+    :dark="darkMode"
   >
     <!-- <template slot="progress">
       <v-progress-linear
@@ -20,25 +21,59 @@
       src="https://images.alphacoders.com/581/581224.jpg"
     ></v-img>
 
-    <v-card-title>Pokedex</v-card-title>
+    <v-card-title class="nombrePokedex">Pokedex</v-card-title>
 
     <v-card-text>
-       <v-data-table
-    :headers="headers"
-    :items="pokemones"
-    :items-per-page="5"
-    class="elevation-1"
-  ></v-data-table>
+    <v-data-table :headers="headers" :items="pokedex" :items-per-page="10">
+        <template v-slot:item="row">
+            <tr>
+              <td>{{row.item.name}}</td>
+              <td>{{row.item.habilidad}}</td>
+              <td>
+                  <v-btn class="mx-2" fab dark small color="red" @click="deletePoke(row.item.id)">
+                      <v-icon >mdi-delete-circle-outline</v-icon>
+                  </v-btn>
+              </td>
+            </tr>
+        </template>
+    </v-data-table>
     </v-card-text>
 
     <v-divider class="mx-4"></v-divider>
 
-    <v-card-title>Agregar</v-card-title>
+    <v-card-actions class="ml-2 mt-1 centerTitulo">
+              <v-btn
+                class="ml-2 mt-1"
+                outlined
+                small
+                color="red"
+                @click="clearPokedex"
+              >
+                <v-icon >mdi-eraser</v-icon>Limpiar pokedex
+              </v-btn>
+              <v-btn
+                class="ml-2 mt-1"
+                outlined
+                small
+                color="blue"
 
-    <v-card-text>
-        <h3>pokedex</h3>
-      {{pokedex}}
-    </v-card-text>
+              >
+                <v-icon >mdi-eye-outline</v-icon>recargar Seleccion
+              </v-btn>
+    </v-card-actions>
+    
+
+    <!-- <v-card-title>Limpiar</v-card-title>
+    <v-btn
+  color="accent"
+  elevation="7"
+  large
+  outlined
+  rounded
+  small
+></v-btn> -->
+
+   
 
     <v-card-actions>
       <v-btn
@@ -70,7 +105,7 @@ export default {
           {
             name: 'charizards',
             ability: 'text',
-            action: 6.0
+            action: ``
           },
           {
             name: 'pikachus',
@@ -82,14 +117,22 @@ export default {
   },
   methods: {
     reserve () {
-      this.loading = true
-      setTimeout(() => (this.loading = false), 2000)
+      //clear pokex
     },
+    deletePoke(id){
+        console.log("elimina poke idd:"+id)
+        this.deletePokemon({id:id})
+    },
+    clearPokedex(){
+        this.clearPokedex()
+    },
+    
+    ...mapActions(['deletePokemon','clearPokedex'])
     
     
   },
   computed:{
-      ...mapState(['pokedex'])
+      ...mapState(['pokedex','darkMode'])
   },
 
 }

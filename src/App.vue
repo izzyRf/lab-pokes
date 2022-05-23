@@ -52,17 +52,24 @@
 <script>
 import NavBar from './components/NavBar2.vue'
 import Footer from './components/Footer.vue'
+import { mapActions } from 'vuex';
 
 export default {
+  created () {
+    this.cargarStorage()
+  },
+  methods: {
+    ...mapActions(['cargarStorage'])
+  },
   name: 'App',
-
   data: () => ({
     //
   }),
   components:{
     NavBar,
     Footer
-}
+  },
+
 };
 </script>
 

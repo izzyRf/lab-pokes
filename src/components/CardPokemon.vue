@@ -6,7 +6,7 @@
     >
     <v-card
       class="opa cardFix"
-      dark
+      :dark="darkMode"
     >
       <v-hover
         v-slot="{ hover }"
@@ -15,6 +15,7 @@
         <v-card
           :elevation="hover ? 40 : 10"
           :class="{ 'on-hover': hover }"
+          
           
         >
           <v-card-title 
@@ -70,6 +71,19 @@
                 <h4 class="centerDIV text- purple--text ">{{pokemon.tipo}}</h4>
             </v-card-actions>
 
+            <v-card-actions class="ml-2 mt-1 centerTitulo">
+              <v-btn
+                class="ml-2 mt-1"
+                outlined
+                
+                small
+                color="red"
+                :to="`/pokemon-detail/${pokemon.id}`"
+              >
+                <v-icon >mdi-eye-outline</v-icon>Ver
+              </v-btn>
+            </v-card-actions>
+
             <v-card-actions class="centerTitulo">
                 <v-chip
                   class="ma-2"
@@ -95,37 +109,29 @@
             </v-card-actions>
 
             <v-card-actions class="centerTitulo">
-               
+               <v-icon>
+                    mdi-lock-pattern
+                </v-icon>
+                Habilidad: 
                 <v-chip
                   class="ma-2"
                   color="orange darken-1 white--text"
                 >
-                <v-icon>
-                    mdi-lock-pattern
-                </v-icon>
-                Habilidad:  {{pokemon.habilidad}}
+                 {{pokemon.habilidad}}
                 </v-chip>
             </v-card-actions>
 
+            
 
 
-            <v-card-actions class="ml-2 mt-5 centerTitulo">
+
+            <v-card-actions class="centerTitulo">
+           
               <v-btn
-                v-if="item.artist === 'Ellie Goulding'"
-                class="ml-2 mt-3"
-                fab
-                icon
-                height="40px"
-                right
-                width="40px"
-              >
-              </v-btn>
-              <v-btn
-                v-else
-                class="ml-2 mt-5"
+                class="ml-2 mt-1"
                 outlined
                 rounded
-                small
+                large
                 color="red"
                 @click="addPoke"
               >
@@ -147,7 +153,7 @@
 
 <script>
 import axios from 'axios'
-import {mapActions } from 'vuex'
+import {mapActions, mapState } from 'vuex'
 export default {
   methods: {
       async getPokemon(){
@@ -167,7 +173,8 @@ export default {
             defensa: data.stats[2].base_stat,
             especial: data.stats[3].base_stat,
             tipo : data.types[0].type.name,
-            habilidad :  data.abilities !== null || '' ? data.abilities[0].ability.name : ' No '
+            habilidad :  data.abilities !== null || '' ? data.abilities[0].ability.name : ' No ',
+            id:data.id
         };
 
         this.pokemon = pokemon;
@@ -180,8 +187,10 @@ export default {
         console.log("Adding poke")
 
           var pokemon = {
-              name : this.pokemon,
-              habilidad : this.pokemon.habilidad
+              name : this.pokemon.nombre,
+              habilidad : this.pokemon.habilidad,
+              active: this.pokemon.hp,
+              id : this.pokemon.id
           }
           this.addPokemon(pokemon)
       },
@@ -207,6 +216,9 @@ export default {
         pokemon: {}
     }
   },
+  computed:{
+    ...mapState(['darkMode'])
+  }
 
 }
 </script>
@@ -218,5 +230,4 @@ export default {
 <style lang="sass" scoped>
 .v-card.on-hover.theme--dark
   background-color: rgba(#FFF, 0.8)
-  >
 </style>

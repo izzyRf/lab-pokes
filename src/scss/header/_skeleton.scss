@@ -24,9 +24,23 @@ $primary-color: rgb(225, 28, 28);
     align-items: center;
     justify-content: center; 
     font-family: Lucida Sans Unicode;
-    font-size: 16;
+    font-size: 18;
     color: rgb(212, 63, 207);
     text-shadow: 2px 2px 2px #726f6f;
+}
+
+.nombrePokedex{
+  display: flex;
+  align-items: center;
+  justify-content: center; 
+  font-family: Lucida Sans Unicode;
+  font-size: 20;
+  color: rgb(200, 21, 21);
+  text-shadow: 2px 2px 2px #0b2bdf;
+}
+
+.switchStyle{
+  margin-top: 80px;
 }
 
 .centerDIV {

@@ -4,6 +4,7 @@ import HomeView from '../views/HomeView.vue'
 import Registro from '../views/Registro.vue'
 import Acceso from '../views/Acceso.vue'
 import Panel from '../views/Panel.vue'
+import DetallesPokemon from '../views/DetailsPokemon.vue'
 
 import {auth} from '../firebase'
 
@@ -40,6 +41,13 @@ const routes = [
     component: Panel,
     meta: {requiresAuth: true}
   },
+  {
+    path: '/pokemon-detail/:id',
+    name: 'DetailsPokes',
+    component: DetallesPokemon,
+    meta: {requiresAuth: true}
+  }
+
 ]
 
 const router = new VueRouter({
@@ -61,7 +69,7 @@ router.beforeEach((to, from, next) => {
       next()
     }
   } else {
-    next() // make sure to always call next()!
+    next()
   }
 })
 

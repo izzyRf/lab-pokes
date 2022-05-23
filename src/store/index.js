@@ -9,11 +9,11 @@ export default new Vuex.Store({
   state: {
     usuario:null,
     error:null,
-    pokedex:null,
+    pokedex:[],
     darkMode:false
   },
-  getters: {
-  },
+  // getters: {
+  // },
   mutations: {
     setUsuario(state, payload){
       state.usuario = payload
@@ -22,7 +22,29 @@ export default new Vuex.Store({
       state.error = payload
     },
     addPoke(state , payload){
-      state.pokedex = payload
+      state.pokedex.push(payload)
+    },
+    deletePoke(state , payload){
+      console.log("filtra"+payload.id)
+      var poke = state.pokedex
+      const result = poke.filter(poke => poke.id != payload.id);
+      state.pokedex = result
+
+    },
+    changeMode(state , payload){
+      state.darkMode = payload
+      //meter a local storage el cambio
+      localStorage.setItem('darkModel', state.darkMode)
+      console.log("cambio estado dark mode: "+ state.darkMode)
+
+
+    },
+    cargar(state , payload){
+      console.log("cargando value: "+payload)
+      state.darkMode = payload
+    },
+    clearPoke(state, payload){
+      state.pokedex = [];
     }
   },
   actions: {
@@ -78,6 +100,33 @@ export default new Vuex.Store({
     addPokemon({commit}, pokemon){
       console.log("haciendo commit en add pomkemon")
       commit('addPoke', pokemon)
+    },
+    deletePokemon({commit}, pokemon){
+      console.log("haciendo commit en add pomkemon")
+      commit('deletePoke', pokemon)
+    },
+    changeTeme({commit}, mode){
+      commit('changeMode', mode)
+    },
+    cargarStorage({commit}){
+      if(localStorage.getItem('darkModel')){
+        var parseBool = localStorage.getItem('darkModel').valueOf()
+        
+        var darkMode = JSON.parse(parseBool) === true;
+         
+        commit('cargar', darkMode)
+
+        console.log('cargando local stoorage'+darkMode + 'tesst  ')
+       
+        return
+      }else{
+      localStorage.setItem('darkModel', false)
+      console.log("variable LS creada ")
+
+      }
+    },
+    clearPokedex({commit}){
+      commit('clearPoke')
     }
   },
   getters:{

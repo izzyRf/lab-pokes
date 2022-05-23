@@ -14,11 +14,9 @@
                 class="text-center"
                 cols="12"
             >
-        <h1 class="text-h4 font-weight-thin mb-4">
-          Pokemon
-        </h1>
+       
         <h4 class="subheading">
-          Registrate para conocer más!
+          {{texto}}
         </h4>
             </v-col>
         </v-row>
@@ -31,7 +29,8 @@
 export default {
     props:{
         altura: String,
-        fuente:String
+        fuente:String,
+        texto: String
     }
 }
 </script>
