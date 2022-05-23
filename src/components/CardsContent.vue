@@ -64,8 +64,9 @@
         </v-row>
  
       </v-col>
+
       <!-- COLUMNA CARD -->
-      <v-col
+      <!-- <v-col
         md="3"
         lg="3"
       >
@@ -77,7 +78,10 @@
         >
           POKEDEX
         </v-card>
-      </v-col>
+      </v-col> -->
+
+        <Pokedex/>
+
     </v-row>
   
 </div>
@@ -91,14 +95,18 @@ import axios from 'axios'
 //Import for loaders
 import Loading from 'vue-loading-overlay';
 import CardPokemon from '../components/CardPokemon.vue'
+import Pokedex from '../components/Pokedex.vue';
 
 import 'vue-loading-overlay/dist/vue-loading.css';
+
+
 
 
 export default {
     components:{
     Loading,
-    CardPokemon
+    CardPokemon,
+    Pokedex
 },
   data () {
     return {

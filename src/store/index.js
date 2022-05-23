@@ -9,6 +9,8 @@ export default new Vuex.Store({
   state: {
     usuario:null,
     error:null,
+    pokedex:null,
+    darkMode:false
   },
   getters: {
   },
@@ -18,6 +20,9 @@ export default new Vuex.Store({
     },
     setError(state , payload){
       state.error = payload
+    },
+    addPoke(state , payload){
+      state.pokedex = payload
     }
   },
   actions: {
@@ -69,6 +74,10 @@ export default new Vuex.Store({
     },
     detectUser({commit}, usuario){
       commit('setUsuario', usuario)
+    },
+    addPokemon({commit}, pokemon){
+      console.log("haciendo commit en add pomkemon")
+      commit('addPoke', pokemon)
     }
   },
   getters:{

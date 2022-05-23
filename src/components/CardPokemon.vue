@@ -5,16 +5,17 @@
         lg ="4"
     >
     <v-card
-      class="opa"
-      
+      class="opa cardFix"
+      dark
     >
       <v-hover
         v-slot="{ hover }"
-        open-delay="200"
+        open-delay="100"
       >
         <v-card
-          :elevation="hover ? 16 : 2"
+          :elevation="hover ? 40 : 10"
           :class="{ 'on-hover': hover }"
+          
         >
           <v-card-title 
           class="centerTitulo"
@@ -126,6 +127,7 @@
                 rounded
                 small
                 color="red"
+                @click="addPoke"
               >
                 Agregar a pokedex
                 <v-icon >mdi-pokeball</v-icon>
@@ -145,14 +147,13 @@
 
 <script>
 import axios from 'axios'
+import {mapActions } from 'vuex'
 export default {
   methods: {
       async getPokemon(){
         this.isLoading = true;
         console.log("consultando pokemon")
         let datos = await axios.get(this.url)
-        // console.log(datos.results)
-        //this.pokemon = datos.data
         let data = datos.data
 
         const pokemon = {
@@ -166,16 +167,25 @@ export default {
             defensa: data.stats[2].base_stat,
             especial: data.stats[3].base_stat,
             tipo : data.types[0].type.name,
-            habilidad : data.abilities[1].ability.name
+            habilidad :  data.abilities !== null || '' ? data.abilities[0].ability.name : ' No '
         };
 
         this.pokemon = pokemon;
 
-
         console.log(pokemon)
         this.isLoading = false;
   
-      }
+      },
+      addPoke(){
+        console.log("Adding poke")
+
+          var pokemon = {
+              name : this.pokemon,
+              habilidad : this.pokemon.habilidad
+          }
+          this.addPokemon(pokemon)
+      },
+      ...mapActions(['addPokemon'])
   },
   created () {
       console.log("text:"+this.text)
@@ -201,5 +211,12 @@ export default {
 }
 </script>
 
-<style  lang="scss" src="../scss/main.scss"></style>
+<style  lang="scss" src="../scss/main.scss">
+
+</style>
+
+<style lang="sass" scoped>
+.v-card.on-hover.theme--dark
+  background-color: rgba(#FFF, 0.8)
+  >
 </style>

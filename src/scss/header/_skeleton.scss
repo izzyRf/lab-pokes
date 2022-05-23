@@ -36,9 +36,16 @@ $primary-color: rgb(225, 28, 28);
     padding: 0px;
   }
 
+.centerTitulo{
+  display: flex;
+  align-items: center;
+  justify-content: center; 
+}
+.cardFix{
+  margin-left: 5px;
+}
 
-  .centerTitulo{
-    display: flex;
-    align-items: center;
-    justify-content: center; 
-  }
+.pokedexFix{
+  margin-right: 5px;
+
+}
