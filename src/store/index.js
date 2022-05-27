@@ -10,7 +10,8 @@ export default new Vuex.Store({
     usuario:null,
     error:null,
     pokedex:[],
-    darkMode:false
+    darkMode:false,
+    refresh:false
   },
   // getters: {
   // },
@@ -36,8 +37,12 @@ export default new Vuex.Store({
       //meter a local storage el cambio
       localStorage.setItem('darkModel', state.darkMode)
       console.log("cambio estado dark mode: "+ state.darkMode)
-
-
+    },
+    changeRef(state , payload){
+      state.refresh = payload
+      //meter a local storage el cambio
+      //localStorage.setItem('darkModel', state.darkMode)
+      console.log("cambio estado dark mode: "+ state.refresh)
     },
     cargar(state , payload){
       console.log("cargando value: "+payload)
@@ -127,7 +132,10 @@ export default new Vuex.Store({
     },
     clearPokedex({commit}){
       commit('clearPoke')
-    }
+    },
+    changeRef({commit}, mode){
+      commit('changeRef', mode)
+    },
   },
   getters:{
     existeUser(state){

@@ -42,7 +42,6 @@
                 </v-chip>
               </v-list-item-subtitle>
 
-              
             </v-list-item-content>
             
         </v-col>

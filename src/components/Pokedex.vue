@@ -57,6 +57,7 @@
               <v-btn
                 small
                 color="blue"
+                @click="clearPokemones"
               >
                 <v-icon >mdi-reload</v-icon>Recargar listado pokemones
               </v-btn>
@@ -104,8 +105,12 @@ export default {
     clearPokedex(){
         this.clearPokedex()
     },
+     clearPokemones(){
+        this.$emit('evtClear')
+    },
     
-    ...mapActions(['deletePokemon','clearPokedex'])
+    
+    ...mapActions(['deletePokemon','clearPokedex','changeRef'])
     
     
   },

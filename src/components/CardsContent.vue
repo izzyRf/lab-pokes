@@ -68,23 +68,9 @@
  
       </v-col>
 
-      <!-- COLUMNA CARD -->
-      <!-- <v-col
-        md="3"
-        lg="3"
-      >
-        <v-card
-          class="pa-2"
-          outlined
-          tile
-          color="#26c6da"
-        >
-          POKEDEX
-        </v-card>
-      </v-col> -->
-
-        <Pokedex/>
-
+        <!-- <Pokedex /> -->
+        <Pokedex v-on:evtClear="doRefreshPoke"/>
+        
     </v-row>
   
 </div>
@@ -148,11 +134,24 @@ export default {
 
       },
       onCancel() {
-              console.log('User cancelled the loader.')
-            }
+        console.log('User cancelled the loader.')
+      },
+      doRefreshPoke(){
+        this.getPokemonesNew();
+      },
+      async getPokemonesNew(){
+        this.pokemones=[]
+        this.isLoading = true;
+        let datos = await axios.get('https://pokeapi.co/api/v2/pokemon/')
+        // console.log(datos.results)
+        this.pokemones = datos.results
+        $emit('pokemones', datos.results)
+        this.isLoading = false;
+      },
+
   },
   computed:{
-      ...mapState(['darkMode'])
+      ...mapState(['darkMode','refresh']),
   },
   name:'Panel',
   created () {

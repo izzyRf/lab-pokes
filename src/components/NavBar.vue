@@ -31,49 +31,24 @@
         ></v-img>
       </v-app-bar-title>
 
-      <!-- <v-spacer></v-spacer> -->
-
-      <!-- <v-btn icon>
-        <v-icon>mdi-magnify</v-icon>
-      </v-btn> -->
-
-      <!-- <v-btn >
-        
-      </v-btn> -->
+  
       <v-btn
         v-if="existeUser"
+        small
+        outlined
         to='/home'
       >
         <v-icon>mdi-pokeball</v-icon> Home 
       </v-btn>
-      <!-- <v-btn 
-        outlined>
-        <v-icon>mdi-user</v-icon> Habilidades
-      </v-btn> -->
-       <!-- <v-btn elevation="2"
-        plain>
-        <v-icon>mdi-batery-positive</v-icon>Cerrar sesion
-        
-      </v-btn> -->
-      <!-- <v-btn
-      outlined
-    >
-      Salir
-    </v-btn> -->
-
-      <!-- <v-btn icon>
-        <v-icon>mdi-dots-vertical</v-icon>
-      </v-btn> -->
-
+     
      <v-btn
       v-if="existeUser"
-      class="ma-2"
+     
       outlined
-      large
-      color="indigo"
+      small
       @click="cerrarSesion"
     >
-       cerrar  Sesion
+       Salir
     </v-btn>
 
     </v-app-bar>

@@ -56,19 +56,13 @@
                     </v-col>
                   </v-row>
                 </v-card-text>
-
               </v-card>
-
-
-
-
           </div>
           <div v-else>
              <Registro/>
           </div>
-         
-        </v-card>
-        <v-card flat v-if="i === 2">
+        </v-card >
+        <v-card dark v-if="i === 2">
           <Acceso/>
         </v-card>
       </v-tab-item>
