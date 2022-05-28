@@ -11,8 +11,6 @@
        </loading>
 
     <v-row
-     
-      
     >
       <!-- SELECT DE POLEMONES -->
       <v-col md="4" offset-md="4">
@@ -25,22 +23,20 @@
             :items="tipos"
             label="Selector pokemones"
             outlined
-             
          >
-             <template v-slot:item="{ item, attrs, on }">
-               <v-list-item
-                 v-bind="attrs"
-                 v-on="on"
-                 @click="byType(item.url)"
-               >
-                 <v-list-item-title
-                   :id="item.url"
-                   v-text="item.name"
-                   
-                 ></v-list-item-title>
-               </v-list-item>
-             </template>
-        </v-select>
+            <template v-slot:item="{ item, attrs, on }">
+              <v-list-item
+                v-bind="attrs"
+                v-on="on"
+                @click="byType(item.url)"
+              >
+                <v-list-item-title
+                  :id="item.url"
+                  v-text="item.name"
+                ></v-list-item-title>
+              </v-list-item>
+            </template>
+          </v-select>
         </v-card>
       </v-col>
       <v-col
@@ -50,11 +46,8 @@
       </v-col>
     </v-row>
 
-  
-
   </v-container>
 
-    
     <v-row >
       <v-col
         cols="12"
@@ -63,16 +56,13 @@
       >
         <!-- .COLUMNAS  -->
         <v-row>
-            <CardPokemon v-for="(item, index) in pokemones" :key="index" :text="`texto propiedad○ ${index}`" :url="`${item.pokemon.url}`"/>
+          <CardPokemon v-for="(item, index) in pokemones" :key="index" :text="`texto propiedad○ ${index}`" :url="`${item.pokemon.url}`"/>
         </v-row>
  
       </v-col>
-
         <!-- <Pokedex /> -->
-        <Pokedex v-on:evtClear="doRefreshPoke"/>
-        
+      <Pokedex v-on:evtClear="doRefreshPoke"/>
     </v-row>
-  
 </div>
 
 
@@ -111,24 +101,19 @@ export default {
   methods: {
       async getPokemones(){
         this.isLoading = true;
-        let datos = await axios.get('https://pokeapi.co/api/v2/pokemon/')
+        let datos = await axios.get( process.env.VUE_APP_SERVICE_URL)
         // console.log(datos.results)
         this.pokemones = datos.results
         this.isLoading = false;
       },
       async getTypes(){
-          
-          let types = await axios.get('https://pokeapi.co/api/v2/type')
+          let types = await axios.get( process.env.VUE_APP_SERVICE_URL_TYPES )
           this.tipos = types.data.results
       },
       async byType(id){
-           //setTimeout(() => this.basketAddSuccess = false, 2000);
           this.pokemones = []
-          console.log("consulta API: "+id)
           this.isLoading = true;
-
           let type = await axios.get(id)
-          console.log("consulta type consultado: "+type.data.pokemon)
           this.pokemones = type.data.pokemon
           this.isLoading = false
 
@@ -137,15 +122,14 @@ export default {
         console.log('User cancelled the loader.')
       },
       doRefreshPoke(){
-        this.getPokemonesNew();
+        this.getPokeRefresh();
       },
-      async getPokemonesNew(){
+      async getPokeRefresh(){
         this.pokemones=[]
         this.isLoading = true;
-        let datos = await axios.get('https://pokeapi.co/api/v2/pokemon/')
-        // console.log(datos.results)
-        this.pokemones = datos.results
-        $emit('pokemones', datos.results)
+        var randomType = Math.floor((Math.random() * 9) + 1);
+        let datos = await axios.get(process.env.VUE_APP_SERVICE_URL_TYPES + randomType)
+        this.pokemones = datos.data.pokemon
         this.isLoading = false;
       },
 

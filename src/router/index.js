@@ -5,6 +5,8 @@ import Registro from '../views/Registro.vue'
 import Acceso from '../views/Acceso.vue'
 import Panel from '../views/Panel.vue'
 import DetallesPokemon from '../views/DetailsPokemon.vue'
+import RickNMorty from '../views/RickMorty.vue'
+
 
 import {auth} from '../firebase'
 
@@ -45,6 +47,12 @@ const routes = [
     path: '/pokemon-detail/:id',
     name: 'DetailsPokes',
     component: DetallesPokemon,
+    meta: {requiresAuth: true}
+  },
+  {
+    path: '/rick-morty/',
+    name: 'RickMorty',
+    component: RickNMorty,
     meta: {requiresAuth: true}
   }
 

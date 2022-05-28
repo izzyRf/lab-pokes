@@ -13,8 +13,6 @@ export default new Vuex.Store({
     darkMode:false,
     refresh:false
   },
-  // getters: {
-  // },
   mutations: {
     setUsuario(state, payload){
       state.usuario = payload
